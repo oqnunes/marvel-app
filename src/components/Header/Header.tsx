@@ -1,14 +1,45 @@
 import styled from 'styled-components';
 
-import LogoMarvel from './../../images/marvel_logo.png'
+import LogoMarvel from './../../images/marvel_logo.png';
+import useSetState from '../../utils/useSetState';
+
+var _timer = 0;
+
+interface InputChangeProps {
+  value: String
+}
 
 const Header = () => {
+
+  const [localState, setLocalState] : any = useSetState({
+    search: ""
+  });
+
+  const _handleSubmitSearch = () => {
+    alert('Send!')
+  }
+
+  const _handleOnChangeSearch = ({ value }: InputChangeProps) => {
+    setLocalState({
+      search: value,
+    });
+
+    (() => {
+      if (_timer) window.clearTimeout(_timer);
+      _timer = window.setTimeout(function () {
+        _handleSubmitSearch()
+      }, 1000);
+    })();
+  };
 
   return(
     <NavColor>
       <NavColorContainer>
         <img src={LogoMarvel} alt="Marvel Logo" />
-        <InputSearch placeholder="deadpool" />
+        <InputSearch 
+          value={localState.search}
+          onChange={(event) => _handleOnChangeSearch({ value: event.target.value })}
+          placeholder="deadpool" />
       </NavColorContainer>
     </NavColor>
   );
