@@ -29,7 +29,8 @@ const PaginationComicsProvider = (props) => {
         selectData: selectedData
       });
     }
-  }, [state, setDataComics]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [state,]);
 
   return (
     <PaginationComicsContext.Provider
