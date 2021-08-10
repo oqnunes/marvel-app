@@ -1,37 +1,44 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 
 import LoadingGif from './../../images/loading.gif';
 
 import Header from '../../components/Header/Header';
 import ComicsList from '../../components/ComicsList/ComicsList';
-
-import fetch_api from './utils/fetch_api';
+import PaginationBox from '../../components/PaginationBox/PaginationBox';
+import { PaginationComicsContext } from '../../contexts/PaginationComics';
 
 import { ContainerApp, BodyArea, LoadingContent } from './WrapperIndex.components';
 
+import fetch_api from './utils/fetch_api';
+
 export const WrapperIndex = () => {
 
-  const [comics, setComics] = useState([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const refEffect = useRef(null);
+
+  const { paginationComics, setPaginationComics, dataComics } = useContext(PaginationComicsContext);
 
   useEffect(() => {
-    if(comics.length <= 0){
-      fetch_api({ setComics: setComics, setIsLoading: setIsLoading });
+    if(paginationComics.data.length <= 0){
+      fetch_api({ setComics: setPaginationComics });
     }
-  }, [comics]);
+  }, [paginationComics, setPaginationComics]);
 
   return(
     <ContainerApp>
       <Header />
       {
-        isLoading
+        paginationComics.isLoading
          ? (
           <LoadingContent>
             <img src={LoadingGif} alt="Loading..." />
           </LoadingContent>
          ) : (
           <BodyArea>
-            <ComicsList dataItems={comics} />
+            <div ref={refEffect} />
+            <ComicsList 
+              dataItems={dataComics}
+            />
+            <PaginationBox refEffect={refEffect} />
           </BodyArea>
          )
       }

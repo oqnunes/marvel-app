@@ -7,10 +7,11 @@ interface ComicsListProps {
 };
 
 const ComicsList = ({ dataItems }: ComicsListProps) => {
+
   return(
     <ListOfComics>
       {
-        dataItems.map((comic: any, index: Number) => {
+        dataItems.selectData.map((comic: any, index: Number) => {
 
           const validateImage = comic.thumbnail.path.endsWith('image_not_available')
             ? ComicThumbNailNotAvailable
@@ -37,7 +38,7 @@ const ListOfComics = styled.article`
   width: 100%;
   max-width: 1440px;
 
-  padding: 220px 20px;
+  padding: 220px 20px 60px;
 
   display: flex;
   justify-content: space-between;

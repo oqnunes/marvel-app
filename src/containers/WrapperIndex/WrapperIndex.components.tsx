@@ -11,8 +11,9 @@ export const ContainerApp = styled.section`
 export const BodyArea = styled.main`
   width: 100%;
   display: flex;
-  align-items: flex-start;
-  justify-content: center;
+  align-items: center;
+  justify-content: flex-start;
+  flex-direction: column;
 `;
 
 export const LoadingContent = styled.div`
