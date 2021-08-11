@@ -34,13 +34,6 @@ const PaginationComicsProvider = (props) => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [state]);
 
-  useEffect(() => {
-    console.log({
-      selectedData: dataComics.selectData,
-      state: state
-    })
-  }, [state, dataComics] );
-
   return (
     <PaginationComicsContext.Provider
       value={{ 

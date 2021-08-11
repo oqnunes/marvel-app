@@ -8,9 +8,6 @@ const ComicsListByCharacters = ({ data } : any) => {
       {
         data && data.length > 0
         ? data.map((comic: any, index: Number) => {
-          console.log({
-            comic: comic
-          })
           return(
             <h1 key={`ComicByChar-${index}`}>
               {comic.name}

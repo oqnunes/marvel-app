@@ -21,14 +21,6 @@ const searchByCharacters = async ({
       nameStartsWith: search
     }
   });
-  console.log({
-    fetch_comics1:fetch_comics
-  });
-
-  console.log({
-    dataTosend: fetch_comics.data.data.results
-  })
-
   if(fetch_comics.status === 200){
     setPaginationComics({
       isLoading: false,
