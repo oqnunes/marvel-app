@@ -8,10 +8,12 @@ const PaginationComicsProvider = (props) => {
   const [state, setState] = useSetState({
     data: [],
     currentPage: 1,
-    comicsPerPage: 20,
+    comicsPerPage: 100,
     offSet: 0,
     lastIndexOf: 0,
     isLoading: true,
+    isSearching: false,
+    comicsByCharacters: []
   });
 
   const [dataComics, setDataComics] = useSetState({
@@ -30,7 +32,14 @@ const PaginationComicsProvider = (props) => {
       });
     }
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [state,]);
+  }, [state]);
+
+  useEffect(() => {
+    console.log({
+      selectedData: dataComics.selectData,
+      state: state
+    })
+  }, [state, dataComics] );
 
   return (
     <PaginationComicsContext.Provider

@@ -29,14 +29,8 @@ const updateDataByOffSet = async ({
       offSet: 0,
       lastIndexOf: fetch_offset,
       currentPage: 1,
-      comicsPerPage: 20,
-     });
-  }
-  
-  if(action_type && action_type === "previous"){
-    setPaginationComics({ 
-      currentPage: 5,
-      offSet: 100,
+      comicsPerPage: 100,
+      isLoading: false
      });
   }
 

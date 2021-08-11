@@ -10,6 +10,7 @@ import { PaginationComicsContext } from '../../contexts/PaginationComics';
 import { ContainerApp, BodyArea, LoadingContent } from './WrapperIndex.components';
 
 import fetch_api from './utils/fetch_api';
+import ComicsListByCharacters from '../../components/ComicsListByCharacters/ComicsListByCharacters';
 
 export const WrapperIndex = () => {
 
@@ -35,10 +36,19 @@ export const WrapperIndex = () => {
          ) : (
           <BodyArea>
             <div ref={refEffect} />
-            <ComicsList 
-              dataItems={dataComics}
-            />
-            <PaginationBox refEffect={refEffect} />
+            {
+              paginationComics.isSearching
+                ? (
+                  <ComicsListByCharacters data={paginationComics.comicsByCharacters} />
+                ) : (
+                  <>
+                    <ComicsList 
+                      dataItems={dataComics}
+                    />
+                    <PaginationBox refEffect={refEffect} />
+                  </>
+                )
+            }
           </BodyArea>
          )
       }

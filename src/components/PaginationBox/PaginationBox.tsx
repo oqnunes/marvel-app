@@ -20,6 +20,7 @@ const PaginationBox = ({refEffect}: any) => {
   const _handleClickPrevius = () => {
     handleUpEffect();
 
+    // If user is at the first page
     if(paginationComics.lastIndexOf === 0 && paginationComics.offSet === 0){
       setTimeout(() => {
         setPaginationComics({
@@ -36,13 +37,7 @@ const PaginationBox = ({refEffect}: any) => {
         fetch_offset: paginationComics.lastIndexOf - 100,
         action_type: "previous"
       });
-      setTimeout(() => {
-        setPaginationComics({
-          isLoading: false,
-          currentPage: 5,
-          comicsPerPage: 20,
-        });
-      }, 400);
+      
     }else{
       setTimeout(() => {
         setPaginationComics({
@@ -53,13 +48,6 @@ const PaginationBox = ({refEffect}: any) => {
       }, 400);
     }
 
-    setTimeout(() => {
-      setPaginationComics({
-        currentPage: paginationComics.currentPage - 1,
-        offSet: ((paginationComics.currentPage - 1) * paginationComics.comicsPerPage),
-        isLoading: false
-      });
-    }, 400);
   };
   
   const _handleClickNext = () => {

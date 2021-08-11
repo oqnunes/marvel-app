@@ -41,8 +41,9 @@ const ListOfComics = styled.article`
   padding: 220px 20px 60px;
 
   display: flex;
+  flex-flow: row wrap;
   justify-content: space-between;
-  flex-wrap: wrap;
+
 `;
 
 const ComicBook = styled.div`
