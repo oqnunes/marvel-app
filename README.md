@@ -22,6 +22,7 @@ Give the option to search by character, and return the comics respectively.
  - [ ] Pagination with [react-router-dom](https://reactrouter.com/web/guides/quick-start).
  - [ ] Return the Comic Pictures, instead of just the list with the names.
  - [ ] Mobile Responsive.
+ - [ ] Handle error with try/catch on axios requests.
 
 <br />
 
